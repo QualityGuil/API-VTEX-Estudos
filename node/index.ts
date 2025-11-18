@@ -11,6 +11,9 @@ import { searchUserByEmailDocument } from './middlewares/searchUser'
 import { addUser } from './middlewares/addUser'
 import { jsonParser } from './middlewares/jsonParse'
 import { searchUserByBody } from './middlewares/searchUserByBody'
+import { createDocumentVBase } from './middlewares/vbase/createDocumentVBase'
+import { getDocumentVBase } from './middlewares/vbase/getDocumentVBase'
+import { deleteDocumentVBase } from './middlewares/vbase/deleteDocumentVBase'
 
 const TIMEOUT_MS = 800
 
@@ -36,6 +39,7 @@ declare global {
   interface State extends RecorderState {
     code: number
     found: boolean
+    list: []
   }
 
   interface IdentifiedCategory extends Category {
@@ -65,5 +69,18 @@ export default new Service({
     addUser: method({
       POST: [jsonParser, searchUserByBody, addUser]
     }),
+
+    getDocumentVBase: method({
+      GET: [getDocumentVBase]
+    }),
+
+    createDocumentVBase: method({
+      POST: [createDocumentVBase]
+    }),
+
+    deleteDocumentVBase: method({
+      DELETE: [deleteDocumentVBase]
+    }),
+
   },
 })

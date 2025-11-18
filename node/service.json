@@ -20,13 +20,23 @@
     },
     "addUser": {
       "path": "/_v/addUser",
-      "public": true,
-      "method": "POST"
+      "public": true
     },
     "searchUserByBody": {
       "path": "/_v/searchUserByBody",
-      "public": true,
-      "method": "POST"
+      "public": true
+    },
+    "createDocumentVBase": {
+      "path": "/_v/createDocumentVBase",
+      "public": true
+    },
+    "getDocumentVBase": {
+      "path": "/_v/getDocumentVBase",
+      "public": true
+    },
+    "deleteDocumentVBase": {
+      "path": "/_v/deleteDocumentVBase",
+      "public": true
     }
   }
 }
