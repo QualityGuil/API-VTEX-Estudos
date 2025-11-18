@@ -1,0 +1,32 @@
+{
+  "memory": 256,
+  "ttl": 10,
+  "timeout": 2,
+  "minReplicas": 2,
+  "maxReplicas": 4,
+  "workers": 1,
+  "routes": {
+    "status": {
+      "path": "/_v/status/:code",
+      "public": true
+    },
+    "searchProductById": {
+      "path": "/_v/searchProductById/:id",
+      "public": true
+    },
+    "searchUserByEmailDocument": {
+      "path": "/_v/searchUserByEmailDocument/:email/:document",
+      "public": true
+    },
+    "addUser": {
+      "path": "/_v/addUser",
+      "public": true,
+      "method": "POST"
+    },
+    "searchUserByBody": {
+      "path": "/_v/searchUserByBody",
+      "public": true,
+      "method": "POST"
+    }
+  }
+}

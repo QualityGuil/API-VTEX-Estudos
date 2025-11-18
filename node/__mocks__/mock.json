@@ -1,0 +1,20 @@
+[
+  {
+    "id": 101,
+    "nome": "João Silva",
+    "email": "joao.silva.mock@empresa.com",
+    "status": "ativo"
+  },
+  {
+    "id": 102,
+    "nome": "Maria Santos",
+    "email": "maria.santos.mock@empresa.com",
+    "status": "inativo"
+  },
+  {
+    "id": 103,
+    "nome": "Pedro Oliveira",
+    "email": "pedro.oliveira.mock@empresa.com",
+    "status": "ativo"
+  }
+]
