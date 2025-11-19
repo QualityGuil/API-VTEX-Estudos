@@ -24,7 +24,11 @@ export async function createDocumentVBase(
 
     } catch (error) {
         
-        if (!listaBucket || listaBucket.length === 0) {
+        // if (!listaBucket || listaBucket.length === 0) {
+        //     listaAtt = requestBody;
+        // }
+
+        if (ctx.status === 404) {
             listaAtt = requestBody;
         }
 
