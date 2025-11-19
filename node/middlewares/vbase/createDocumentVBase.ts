@@ -17,9 +17,9 @@ export async function createDocumentVBase(
 
         if (ctx.state.found) {
 
-            const responseSearchBucket: [] = await vbase.getJSON('listaCompras', 'listaComprasPath')
+            // const responseSearchBucket: [] = await vbase.getJSON('listaCompras', 'listaComprasPath')
 
-            listaAtt = [responseSearchBucket, requestBody];
+            listaAtt = [ctx.state.list, requestBody];
 
         } else {
             listaAtt = requestBody
