@@ -11,39 +11,37 @@ export async function createDocumentVBase(
 
     const requestBody = await json(ctx.req)
 
-    let listaBucket;
-    let listaAtt;
-
     try {
 
-        const responseSearchBucket: [] = await vbase.getJSON('listaCompras', 'listaComprasPath')
+        let listaAtt;
 
-        listaBucket = responseSearchBucket
+        if (ctx.state.found) {
 
-        listaAtt = [listaBucket, requestBody];
+            const responseSearchBucket: [] = await vbase.getJSON('listaCompras', 'listaComprasPath')
 
-    } catch (error) {
-        
-        // if (!listaBucket || listaBucket.length === 0) {
-        //     listaAtt = requestBody;
-        // }
+            listaAtt = [responseSearchBucket, requestBody];
 
-        if (ctx.status === 404) {
-            listaAtt = requestBody;
+        } else {
+            listaAtt = requestBody
         }
 
-    }
+        // Nome do bucket (local de armazenamento de arquivos da vtex)
+        // caminho do documento no bucket
+        // objeto a ser armazenado
+        const response = await vbase.saveJSON('listaCompras', 'listaComprasPath', listaAtt);
 
-    // Nome do bucket (local de armazenamento de arquivos da vtex)
-    // caminho do documento no bucket
-    // objeto a ser armazenado
-    const response = await vbase.saveJSON('listaCompras', 'listaComprasPath', listaAtt);
+        ctx.status = 201;
+        ctx.body = {
+            response
+        }
 
+    } catch (error) {
 
+        ctx.status = 400
+        ctx.body = {
+            message: "Erro ao criar arquivo"
+        }
 
-    ctx.status = 201;
-    ctx.body = {
-        response
     }
 
     await next();

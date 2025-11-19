@@ -75,7 +75,7 @@ export default new Service({
     }),
 
     createDocumentVBase: method({
-      POST: [createDocumentVBase]
+      POST: [getDocumentVBase, createDocumentVBase]
     }),
 
     deleteDocumentVBase: method({
