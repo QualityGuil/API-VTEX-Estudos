@@ -17,12 +17,10 @@ export async function createDocumentVBase(
 
         if (ctx.state.found) {
 
-            // const responseSearchBucket: [] = await vbase.getJSON('listaCompras', 'listaComprasPath')
-
-            listaAtt = [ctx.state.list, requestBody];
+            listaAtt = [...ctx.state.list, requestBody];
 
         } else {
-            listaAtt = requestBody
+            listaAtt = [requestBody]
         }
 
         // Nome do bucket (local de armazenamento de arquivos da vtex)
