@@ -9,6 +9,7 @@ export async function getPostById(
             route: { params }
         }
     } = ctx
+    
     const postId = params.id as string
 
     if(!postId) {
