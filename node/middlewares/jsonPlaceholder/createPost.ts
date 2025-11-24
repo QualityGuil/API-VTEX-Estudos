@@ -29,7 +29,7 @@ export async function createPost(
 
         ctx.state.found = false;
 
-        ctx.status = 404;
+        ctx.status = 400;
         ctx.body = {
             encontrado: ctx.state.found,
             message: "Não foi possível criar Post!"

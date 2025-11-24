@@ -89,7 +89,7 @@ export default new Service({
     }),
 
     createPost: method({
-      GET: [createPost]
+      POST: [createPost]
     })
 
   },
