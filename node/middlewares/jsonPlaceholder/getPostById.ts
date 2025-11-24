@@ -1,19 +1,23 @@
-export async function getDocumentVBase(
+export async function getPostById(
     ctx: Context,
     next: () => Promise<unknown>
 ) {
 
     const {
-        clients: { vbase }
+        clients: { JsonPlaceholder },
+        vtex: {
+            route: { params }
+        }
     } = ctx
+    const postId = params.id as string
+
+    if(!postId) {
+        throw new Error('Id não inserido!');
+    }
 
     try {
 
-        const response: [] = await vbase.getJSON('listaCompras', 'listaComprasPath')
-
-        ctx.state.list = response;
-
-        ctx.state.found = true;
+        const response = await JsonPlaceholder.getPostById(postId);
 
         ctx.status = 200;
         ctx.body = {
@@ -28,7 +32,7 @@ export async function getDocumentVBase(
         ctx.status = 404;
         ctx.body = {
             encontrado: ctx.state.found,
-            message: "Lista de compras não encontrada"
+            message: "Post não encontrado!"
         }
 
     }

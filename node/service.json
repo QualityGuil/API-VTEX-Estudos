@@ -37,6 +37,14 @@
     "deleteDocumentVBase": {
       "path": "/_v/deleteDocumentVBase",
       "public": true
+    },
+    "getPostById": {
+      "path": "/_v/getPostById/:id",
+      "public": true
+    },
+    "createPost": {
+      "path": "/_v/createPost",
+      "public": true
     }
   }
 }

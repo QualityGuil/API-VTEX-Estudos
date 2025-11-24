@@ -26,28 +26,28 @@ export async function addUser(
 
     const newUserData: UserData = ctx.body as UserData;
 
-        try {
-            const addUser = await masterdata.createDocument({
-                dataEntity: 'FG',
-                fields: newUserData,
-            })
+    try {
+        const addUser = await masterdata.createDocument({
+            dataEntity: 'FG',
+            fields: newUserData,
+        })
 
-            ctx.status = 201
-            ctx.body = {
-                message: "Usuário cadastrado com sucesso!",
-                addUser
-            }
-        } catch (error) {
-            console.error('❌ Erro ao adicionar usuário:', error);
-
-            ctx.status = error.response?.status || 500;
-
-            ctx.body = {
-                error: error,
-                message: 'Erro ao adicionar usuário no Master Data.',
-                details: error.message || 'Verifique os logs do serviço para mais detalhes.'
-            };
+        ctx.status = 201
+        ctx.body = {
+            message: "Usuário cadastrado com sucesso!",
+            addUser
         }
+    } catch (error) {
+        console.error('❌ Erro ao adicionar usuário:', error);
 
-        await next()
+        ctx.status = error.response?.status || 500;
+
+        ctx.body = {
+            error: error,
+            message: 'Erro ao adicionar usuário no Master Data.',
+            details: error.message || 'Verifique os logs do serviço para mais detalhes.'
+        };
     }
+
+    await next()
+}

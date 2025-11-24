@@ -14,6 +14,8 @@ import { searchUserByBody } from './middlewares/searchUserByBody'
 import { createDocumentVBase } from './middlewares/vbase/createDocumentVBase'
 import { getDocumentVBase } from './middlewares/vbase/getDocumentVBase'
 import { deleteDocumentVBase } from './middlewares/vbase/deleteDocumentVBase'
+import { getPostById } from './middlewares/jsonPlaceholder/getPostById'
+import { createPost } from './middlewares/jsonPlaceholder/createPost'
 
 const TIMEOUT_MS = 800
 
@@ -75,12 +77,20 @@ export default new Service({
     }),
 
     createDocumentVBase: method({
-      POST: [createDocumentVBase]
+      POST: [getDocumentVBase, createDocumentVBase]
     }),
 
     deleteDocumentVBase: method({
       DELETE: [deleteDocumentVBase]
     }),
+
+    getPostById: method({
+      GET: [getPostById]
+    }),
+
+    createPost: method({
+      GET: [createPost]
+    })
 
   },
 })
